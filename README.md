@@ -18,7 +18,8 @@ This exporter will use IRSA to assume a role on which we'll attach the following
             "Effect": "Allow",
             "Action": [
                 "rds:DescribeDBInstances",
-                "rds:DescribeDBClusters"
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBEngineVersions"
             ],
             "Resource": "*"
         }
