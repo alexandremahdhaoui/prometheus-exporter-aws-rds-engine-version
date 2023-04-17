@@ -236,7 +236,7 @@ func snapshot(config *Config, metrics *Metrics, m engineVersions) error {
 //	    log.Printf("Failed to export RDS info: %v", err)
 //	}
 func export(metrics *Metrics, rdsInfo RDSInfo, m engineVersions) error {
-	deprecated, err := validateEngineVersion(rdsInfo, m)
+	valid, err := validateEngineVersion(rdsInfo, m)
 	if err != nil {
 		return fmt.Errorf("failed to validate engine version: %w; skip rdsInfo: %#v", err, rdsInfo)
 	}
@@ -247,12 +247,12 @@ func export(metrics *Metrics, rdsInfo RDSInfo, m engineVersions) error {
 		"engine_version":     rdsInfo.EngineVersion,
 	}
 
-	if deprecated {
-		metrics.DeprecatedGauge.With(newLabels).Set(1)
-		metrics.AvailableGauge.With(newLabels).Set(0)
-	} else {
+	if valid {
 		metrics.DeprecatedGauge.With(newLabels).Set(0)
 		metrics.AvailableGauge.With(newLabels).Set(1)
+	} else {
+		metrics.DeprecatedGauge.With(newLabels).Set(1)
+		metrics.AvailableGauge.With(newLabels).Set(0)
 	}
 	return nil
 }

@@ -150,16 +150,16 @@ func TestSnapshot(t *testing.T) {
 			}},
 			want: `# HELP aws_custom_rds_version_available Number of instances whose version is available
 # TYPE aws_custom_rds_version_available gauge
-aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="MySQL",engine_version="5.7.34"} 1
-aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="MySQL",engine_version="8.0.25"} 0
-aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="13.2"} 0
-aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="9.5.24"} 1
+aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="MySQL",engine_version="5.7.34"} 0
+aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="MySQL",engine_version="8.0.25"} 1
+aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="13.2"} 1
+aws_custom_rds_version_available{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="9.5.24"} 0
 # HELP aws_custom_rds_version_deprecated Number of instances whose Version is deprecated
 # TYPE aws_custom_rds_version_deprecated gauge
-aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="MySQL",engine_version="5.7.34"} 0
-aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="MySQL",engine_version="8.0.25"} 1
-aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="13.2"} 1
-aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="9.5.24"} 0
+aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="MySQL",engine_version="5.7.34"} 1
+aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="MySQL",engine_version="8.0.25"} 0
+aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="13.2"} 0
+aws_custom_rds_version_deprecated{cluster_identifier="cluster-1",engine="PostgreSQL",engine_version="9.5.24"} 1
 `,
 			wantErr: nil,
 		},

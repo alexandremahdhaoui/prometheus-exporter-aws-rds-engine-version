@@ -151,13 +151,13 @@ func TestGetEngineVersions(t *testing.T) {
 			},
 			want: engineVersions{
 				"engine1": {
-					"1.0": false,
+					"1.0": true,
 				},
 				"engine2": {
-					"2.0": false,
+					"2.0": true,
 				},
 				"engine3": {
-					"3.0": false,
+					"3.0": true,
 				},
 			},
 			wantErr: nil,
@@ -170,7 +170,7 @@ func TestGetEngineVersions(t *testing.T) {
 				},
 			},
 			want:    nil,
-			wantErr: errors.New("error while querying rds engine version status; failed to describe db engine versions; failed to describe db engine versions"),
+			wantErr: errors.New("error while querying rds deprecated engine version; failed to describe db engine versions; failed to describe db engine versions"),
 		},
 	}
 
