@@ -47,10 +47,10 @@ func getEngineVersions(config *Config) (engineVersions, error) {
 	m := make(engineVersions)
 
 	if err := queryEngineVersions(config, false, m); err != nil {
-		return nil, fmt.Errorf("error while querying rds engine version status; %w", err)
+		return nil, fmt.Errorf("error while querying rds deprecated engine version; %w", err)
 	}
-	if err := queryEngineVersions(config, false, m); err != nil {
-		return nil, fmt.Errorf("error while querying rds engine version status; %w", err)
+	if err := queryEngineVersions(config, true, m); err != nil {
+		return nil, fmt.Errorf("error while querying rds available engine version; %w", err)
 	}
 
 	return m, nil
